@@ -1,0 +1,15 @@
+## Base LGD:
+Unsecured ==> prob_cure * LGC + (1 - prob_cure) * LGWO
+Secured ==> prob_cure * LGC + (1 - prob_cure) * max([ EAD - collateral * (1 - FSD) * (1 - sales_cost) * DF/EAD, floor)
+	
+## Adjusted LGD:
+Unsecured ==> prob_cure * LGC + (1 - prob_cure) * LGWO
+Secured ==> prob_cure * LGC + (1 - prob_cure) * max([sum((EAD - (collateral - interpolations_year_1) * (1 - FSD) * (1 - sales_cost) * DF/EAD)] * probability_vector, floor)
+
+## Trapezium LGD:
+Unsecured ==> prob_cure * LGC + (1 - prob_cure) * LGWO
+Secured ==> prob_cure * LGC + (1 - prob_cure) * max([sum((EAD - (collateral - percentiles_year_1) * (1 - FSD) * (1 - sales_cost) * DF)/EAD * percentiles_prob_vectors_w1w2s3)], floor)
+
+## Jensen LGD:
+Unsecured ==> prob_cure * LGC + (1 - prob_cure) * LGWO
+Secured ==> prob_cure * LGC + (1 - prob_cure) * max([sum((EAD - (collateral - interpolation_total_loss_1) * (1 - FSD) * (1 - sales_cost) * DF/EAD)], floor)
